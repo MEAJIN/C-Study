@@ -1,0 +1,10 @@
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\bin\Debug\ScoreCalculate.exe.config
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\bin\Debug\ScoreCalculate.exe
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\bin\Debug\ScoreCalculate.pdb
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.csproj.AssemblyReference.cache
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.Form1.resources
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.Properties.Resources.resources
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.csproj.GenerateResource.cache
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.csproj.CoreCompileInputs.cache
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.exe
+C:\Users\khj\Desktop\C#\세미나\6주차\ScoreCalculate\obj\Debug\ScoreCalculate.pdb
