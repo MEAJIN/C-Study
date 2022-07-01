@@ -22,7 +22,6 @@ namespace ScoreCalculate
         {
             InitializeComponent();
             FileReader();
-            Calculate();   
         }
 
         #region 시작 화면
@@ -104,6 +103,7 @@ namespace ScoreCalculate
                 FileStream stream = null;
                 decimal sum = 0;
                 decimal avg = 0;
+                decimal max = 0;
 
                 try
                 {
@@ -138,14 +138,16 @@ namespace ScoreCalculate
 
                     dataGridView1.DataSource = table;
 
-                    // 모든 점수 평균
+                    // 점수 연산
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
                         sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
-                        avg = Math.Truncate(10*(sum / table.Rows.Count))/10;
+                        avg = Math.Truncate(10*(sum / table.Rows.Count))/10; // .0f                      
                     }
-                    all_Avg_Value_tbox.Text = avg.ToString();
-                    all_Sum_Value_tbox.Text = sum.ToString();
+
+                    max = Convert.ToDecimal(_Score.Max());
+
+                    Calculate(sum, avg, max);
 
                     file.Close();
                 }
@@ -174,13 +176,13 @@ namespace ScoreCalculate
         }
         #endregion
 
-        #region 모든 점수 평균값
+        #region 값구하기
 
-        private void Calculate()
+        private void Calculate(Decimal sum, Decimal avg, Decimal max)
         {
-            
-
-
+            all_Sum_Value_tbox.Text = sum.ToString();
+            all_Avg_Value_tbox.Text = avg.ToString();
+            best_Score_tBox.Text = max.ToString();
 
             // 총 점수 평균값
         }
