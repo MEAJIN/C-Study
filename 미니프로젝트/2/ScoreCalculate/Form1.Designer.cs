@@ -33,8 +33,6 @@ namespace ScoreCalculate
             this.start_btn = new System.Windows.Forms.Button();
             this.Title_tbox = new System.Windows.Forms.TextBox();
             this.main_Panel = new System.Windows.Forms.GroupBox();
-            this.calculate_Panel = new System.Windows.Forms.Panel();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.샌즈1 = new System.Windows.Forms.Button();
             this.info_panel = new System.Windows.Forms.Panel();
@@ -49,12 +47,25 @@ namespace ScoreCalculate
             this.school_label = new System.Windows.Forms.Label();
             this.name_label = new System.Windows.Forms.Label();
             this.writeValue_tbox = new System.Windows.Forms.TextBox();
+            this.calculate_Panel = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.best_Score_tBox = new System.Windows.Forms.TextBox();
+            this.all_Sum_Value_tbox = new System.Windows.Forms.TextBox();
+            this.best_Score_label = new System.Windows.Forms.Label();
+            this.all_Avg_Value_tbox = new System.Windows.Forms.TextBox();
+            this.all_Sum_Value_label = new System.Windows.Forms.Label();
+            this.all_Average_Value_label = new System.Windows.Forms.Label();
             this.main_Panel.SuspendLayout();
-            this.calculate_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.info_panel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.calculate_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // start_btn
@@ -91,37 +102,17 @@ namespace ScoreCalculate
             // main_Panel
             // 
             this.main_Panel.AutoSize = true;
-            this.main_Panel.Controls.Add(this.calculate_Panel);
             this.main_Panel.Controls.Add(this.Title_tbox);
             this.main_Panel.Controls.Add(this.start_btn);
             this.main_Panel.Controls.Add(this.button1);
             this.main_Panel.Controls.Add(this.샌즈1);
             this.main_Panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.main_Panel.Location = new System.Drawing.Point(953, 528);
+            this.main_Panel.Location = new System.Drawing.Point(865, 261);
             this.main_Panel.Name = "main_Panel";
-            this.main_Panel.Size = new System.Drawing.Size(1035, 675);
+            this.main_Panel.Size = new System.Drawing.Size(1035, 899);
             this.main_Panel.TabIndex = 3;
             this.main_Panel.TabStop = false;
             this.main_Panel.Text = "groupBox1";
-            // 
-            // calculate_Panel
-            // 
-            this.calculate_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calculate_Panel.Controls.Add(this.dataGridView);
-            this.calculate_Panel.Enabled = false;
-            this.calculate_Panel.Location = new System.Drawing.Point(18, 20);
-            this.calculate_Panel.Name = "calculate_Panel";
-            this.calculate_Panel.Size = new System.Drawing.Size(991, 568);
-            this.calculate_Panel.TabIndex = 6;
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(15, 15);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowTemplate.Height = 23;
-            this.dataGridView.Size = new System.Drawing.Size(387, 259);
-            this.dataGridView.TabIndex = 0;
             // 
             // button1
             // 
@@ -155,8 +146,9 @@ namespace ScoreCalculate
             this.info_panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.info_panel.Controls.Add(this.label2);
             this.info_panel.Controls.Add(this.panel2);
+            this.info_panel.Controls.Add(this.main_Panel);
             this.info_panel.Controls.Add(this.writeValue_tbox);
-            this.info_panel.Location = new System.Drawing.Point(-4, -3);
+            this.info_panel.Location = new System.Drawing.Point(954, 28);
             this.info_panel.Name = "info_panel";
             this.info_panel.Size = new System.Drawing.Size(992, 567);
             this.info_panel.TabIndex = 8;
@@ -293,29 +285,155 @@ namespace ScoreCalculate
             this.writeValue_tbox.TabIndex = 14;
             this.writeValue_tbox.TabStop = false;
             // 
+            // calculate_Panel
+            // 
+            this.calculate_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calculate_Panel.Controls.Add(this.dataGridView1);
+            this.calculate_Panel.Controls.Add(this.panel1);
+            this.calculate_Panel.Location = new System.Drawing.Point(26, 28);
+            this.calculate_Panel.Name = "calculate_Panel";
+            this.calculate_Panel.Size = new System.Drawing.Size(991, 568);
+            this.calculate_Panel.TabIndex = 9;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(41, 44);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(556, 259);
+            this.dataGridView1.TabIndex = 15;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Location = new System.Drawing.Point(41, 327);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(905, 209);
+            this.panel1.TabIndex = 14;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.best_Score_tBox);
+            this.panel4.Controls.Add(this.all_Sum_Value_tbox);
+            this.panel4.Controls.Add(this.best_Score_label);
+            this.panel4.Controls.Add(this.all_Avg_Value_tbox);
+            this.panel4.Controls.Add(this.all_Sum_Value_label);
+            this.panel4.Controls.Add(this.all_Average_Value_label);
+            this.panel4.Location = new System.Drawing.Point(6, 7);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(893, 195);
+            this.panel4.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(781, 171);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "↩ ENTER(입력)";
+            // 
+            // best_Score_tBox
+            // 
+            this.best_Score_tBox.BackColor = System.Drawing.Color.Black;
+            this.best_Score_tBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.best_Score_tBox.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.best_Score_tBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.best_Score_tBox.Location = new System.Drawing.Point(152, 123);
+            this.best_Score_tBox.Name = "best_Score_tBox";
+            this.best_Score_tBox.ReadOnly = true;
+            this.best_Score_tBox.Size = new System.Drawing.Size(193, 21);
+            this.best_Score_tBox.TabIndex = 3;
+            // 
+            // all_Sum_Value_tbox
+            // 
+            this.all_Sum_Value_tbox.BackColor = System.Drawing.Color.Black;
+            this.all_Sum_Value_tbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.all_Sum_Value_tbox.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.all_Sum_Value_tbox.ForeColor = System.Drawing.SystemColors.Window;
+            this.all_Sum_Value_tbox.Location = new System.Drawing.Point(163, 25);
+            this.all_Sum_Value_tbox.Name = "all_Sum_Value_tbox";
+            this.all_Sum_Value_tbox.ReadOnly = true;
+            this.all_Sum_Value_tbox.Size = new System.Drawing.Size(140, 21);
+            this.all_Sum_Value_tbox.TabIndex = 2;
+            // 
+            // best_Score_label
+            // 
+            this.best_Score_label.AutoSize = true;
+            this.best_Score_label.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.best_Score_label.ForeColor = System.Drawing.Color.White;
+            this.best_Score_label.Location = new System.Drawing.Point(17, 123);
+            this.best_Score_label.Name = "best_Score_label";
+            this.best_Score_label.Size = new System.Drawing.Size(137, 21);
+            this.best_Score_label.TabIndex = 0;
+            this.best_Score_label.Text = "최고 득점자:";
+            // 
+            // all_Avg_Value_tbox
+            // 
+            this.all_Avg_Value_tbox.BackColor = System.Drawing.Color.Black;
+            this.all_Avg_Value_tbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.all_Avg_Value_tbox.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.all_Avg_Value_tbox.ForeColor = System.Drawing.SystemColors.Window;
+            this.all_Avg_Value_tbox.Location = new System.Drawing.Point(184, 74);
+            this.all_Avg_Value_tbox.Name = "all_Avg_Value_tbox";
+            this.all_Avg_Value_tbox.ReadOnly = true;
+            this.all_Avg_Value_tbox.Size = new System.Drawing.Size(140, 21);
+            this.all_Avg_Value_tbox.TabIndex = 1;
+            // 
+            // all_Sum_Value_label
+            // 
+            this.all_Sum_Value_label.AutoSize = true;
+            this.all_Sum_Value_label.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.all_Sum_Value_label.ForeColor = System.Drawing.Color.White;
+            this.all_Sum_Value_label.Location = new System.Drawing.Point(17, 23);
+            this.all_Sum_Value_label.Name = "all_Sum_Value_label";
+            this.all_Sum_Value_label.Size = new System.Drawing.Size(148, 21);
+            this.all_Sum_Value_label.TabIndex = 0;
+            this.all_Sum_Value_label.Text = "모든 점수 합:";
+            // 
+            // all_Average_Value_label
+            // 
+            this.all_Average_Value_label.AutoSize = true;
+            this.all_Average_Value_label.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.all_Average_Value_label.ForeColor = System.Drawing.Color.White;
+            this.all_Average_Value_label.Location = new System.Drawing.Point(17, 74);
+            this.all_Average_Value_label.Name = "all_Average_Value_label";
+            this.all_Average_Value_label.Size = new System.Drawing.Size(169, 21);
+            this.all_Average_Value_label.TabIndex = 0;
+            this.all_Average_Value_label.Text = "모든 점수 평균:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.calculate_Panel);
             this.Controls.Add(this.info_panel);
-            this.Controls.Add(this.main_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "누가 낙제했니?";
             this.main_Panel.ResumeLayout(false);
             this.main_Panel.PerformLayout();
-            this.calculate_Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.info_panel.ResumeLayout(false);
             this.info_panel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.calculate_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -326,8 +444,6 @@ namespace ScoreCalculate
         private System.Windows.Forms.Button 샌즈1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox Title_tbox;
-        private System.Windows.Forms.Panel calculate_Panel;
-        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Panel info_panel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
@@ -340,6 +456,17 @@ namespace ScoreCalculate
         private System.Windows.Forms.Label school_label;
         private System.Windows.Forms.Label name_label;
         private System.Windows.Forms.TextBox writeValue_tbox;
+        private System.Windows.Forms.Panel calculate_Panel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox best_Score_tBox;
+        private System.Windows.Forms.TextBox all_Sum_Value_tbox;
+        private System.Windows.Forms.Label best_Score_label;
+        private System.Windows.Forms.TextBox all_Avg_Value_tbox;
+        private System.Windows.Forms.Label all_Sum_Value_label;
+        private System.Windows.Forms.Label all_Average_Value_label;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

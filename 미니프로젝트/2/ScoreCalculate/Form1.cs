@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ScoreCalculate
 {
@@ -20,6 +22,7 @@ namespace ScoreCalculate
         {
             InitializeComponent();
             FileReader();
+            Calculate();   
         }
 
         #region 시작 화면
@@ -65,7 +68,7 @@ namespace ScoreCalculate
 
             string Name = name_tbox.Text;
             string School = school_tbox.Text;
-            string Score = score_tbox.Text.ToString();
+            double Score = Convert.ToDouble(score_tbox.Text);
 
             FileStream stream = null;
             DirectoryInfo Dir = new DirectoryInfo(DirPath);
@@ -96,38 +99,61 @@ namespace ScoreCalculate
 
         private void FileReader()
         {
-            List<String> Name = new List<String>();
-            List<String> School = new List<String>();
-            List<String> Score = new List<String>();
-
-            StreamReader file = new StreamReader(DirPath + "2022-06-28.csv");
-            DataTable table = new DataTable();
-
-            table.Columns.Add("이름");
-            table.Columns.Add("학교");
-            table.Columns.Add("점수");
-
-            table.Clear();
-
-            while (!file.EndOfStream)
+            using (StreamReader file = new StreamReader(DirPath + "2022-07-01.csv"))
             {
-                string line = file.ReadLine();
-                string[] data = line.Split(',');
+                FileStream stream = null;
+                decimal sum = 0;
+                decimal avg = 0;
 
-                if (line.Contains("이름"))
+                try
                 {
-                    continue;
+                    List<String> _Name = new List<String>();
+                    List<String> _School = new List<String>();
+                    List<String> _Score = new List<String>();
+
+                    DataTable table = new DataTable();
+
+                    table.Columns.Add("이름");
+                    table.Columns.Add("학교");
+                    table.Columns.Add("점수");
+
+                    table.Clear();
+
+                    while (!file.EndOfStream)
+                    {
+                        string line = file.ReadLine();
+                        string[] Data = line.Split(',');
+
+                        if (line.Contains("이름"))
+                        {
+                            continue;
+                        }
+
+                        _Name.Add(Data[0]);
+                        _School.Add(Data[1]);
+                        _Score.Add(Data[2]);
+
+                        table.Rows.Add(Data[0], Data[1], Data[2]);                                            
+                    }                 
+
+                    dataGridView1.DataSource = table;
+
+                    // 모든 점수 평균
+                    for (int i = 0; i < table.Rows.Count; i++)
+                    {
+                        sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
+                        avg = Math.Truncate(10*(sum / table.Rows.Count))/10;
+                    }
+                    all_Avg_Value_tbox.Text = avg.ToString();
+                    all_Sum_Value_tbox.Text = sum.ToString();
+
+                    file.Close();
                 }
-
-                Name.Add(data[0]);
-                School.Add(data[1]);
-                Score.Add(data[2]);
-
-                table.Rows.Add(data[0], data[1], data[2]);
+                finally
+                {
+                    if (stream != null) stream.Dispose();
+                }
             }
-
-            dataGridView.DataSource = table;
-            file.Close();
         }
         #endregion
 
@@ -146,6 +172,19 @@ namespace ScoreCalculate
             label2.Text = "<입력값>";
             name_tbox.Focus();
         }
+        #endregion
+
+        #region 모든 점수 평균값
+
+        private void Calculate()
+        {
+            
+
+
+
+            // 총 점수 평균값
+        }
+
         #endregion
 
         #region 이벤트
@@ -185,8 +224,8 @@ namespace ScoreCalculate
             score_tbox.BackColor = Color.Black;
             score_tbox.ForeColor = Color.White;
         }
-        #endregion
 
+        #endregion
 
     }
 }

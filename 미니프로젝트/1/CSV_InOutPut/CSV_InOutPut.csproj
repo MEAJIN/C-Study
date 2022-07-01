@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{99ECADB5-72D9-4F27-B226-07DB19D3B3D2}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CSV_InOutPut</RootNamespace>
     <AssemblyName>CSV_InOutPut</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
