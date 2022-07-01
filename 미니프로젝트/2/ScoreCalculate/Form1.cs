@@ -105,6 +105,10 @@ namespace ScoreCalculate
                 decimal avg = 0;
                 decimal max = 0;
 
+                decimal name;
+                string namee;
+                decimal sum1 = 0;
+
                 try
                 {
                     List<String> _Name = new List<String>();
@@ -147,6 +151,18 @@ namespace ScoreCalculate
 
                     max = Convert.ToDecimal(_Score.Max());
 
+                    for (int i = 0; i < table.Rows.Count; i++)
+                    {
+                        sum1 = Convert.ToDecimal(dataGridView1.Rows[i]);
+                        Console.WriteLine(sum1);
+                        if (sum1 == max)
+                        {
+                            
+                        }
+                    }
+
+
+
                     Calculate(sum, avg, max);
 
                     file.Close();
@@ -184,7 +200,9 @@ namespace ScoreCalculate
             all_Avg_Value_tbox.Text = avg.ToString();
             best_Score_tBox.Text = max.ToString();
 
-            // 총 점수 평균값
+            // 득점자
+
+           
         }
 
         #endregion
