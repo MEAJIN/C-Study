@@ -114,6 +114,7 @@ namespace ScoreCalculate
                     List<String> _Name = new List<String>();
                     List<String> _School = new List<String>();
                     List<String> _Score = new List<String>();
+                    List<int> _scoreMax = new List<int>();
 
                     DataTable table = new DataTable();
 
@@ -136,6 +137,7 @@ namespace ScoreCalculate
                         _Name.Add(Data[0]);
                         _School.Add(Data[1]);
                         _Score.Add(Data[2]);
+                        _scoreMax.Add(Convert.ToInt32(Data[2]));
 
                         table.Rows.Add(Data[0], Data[1], Data[2]);                                                   
                     }                 
@@ -144,16 +146,13 @@ namespace ScoreCalculate
                     file.Close();
 
                     // 점수 연산
-                    max = Convert.ToDecimal(_Score.Max());
-                    Console.WriteLine(max);
+                    max = Convert.ToDecimal(_scoreMax.Max());
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
                         sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
                         avg = Math.Truncate(10*(sum / table.Rows.Count))/10; // .0f
                         score = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
-                        
-                        
-
+                     
                         if (max == score)
                         {                       
                             name = Convert.ToString(dataGridView1.Rows[i].Cells["이름"].Value);
@@ -161,15 +160,12 @@ namespace ScoreCalculate
                             scoreCompare = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
                         }
                     }
-
-                    
-
+               
                     Calculate(avg, max, name, school, scoreCompare);                 
                 }
                 finally
                 {
                     if (stream != null) stream.Dispose();
-
                 }
             }
         }
