@@ -94,11 +94,11 @@ namespace ScoreCalculate
         }
         #endregion
 
-        #region List 형태로 파일 읽기
+        #region List 형태로 파일 읽기 및 연산
 
         private void FileReader()
         {
-            using (StreamReader file = new StreamReader(DirPath + "2022-07-04.csv"))
+            using (StreamReader file = new StreamReader(DirPath + "2022-06-29.csv"))
             {
                 FileStream stream = null;
                 decimal sum = 0;
@@ -108,6 +108,7 @@ namespace ScoreCalculate
                 string name = "";
                 string school = "";
                 decimal scoreCompare = 0;
+                int scoreCutLine = 60;
 
                 try
                 {
@@ -117,12 +118,22 @@ namespace ScoreCalculate
                     List<int> _scoreMax = new List<int>();
 
                     DataTable table = new DataTable();
+                    DataTable tableExam = new DataTable();
+                    DataTable tableExam2 = new DataTable();
 
                     table.Columns.Add("이름");
                     table.Columns.Add("학교");
                     table.Columns.Add("점수");
 
+                    tableExam.Columns.Add("이름");
+                    tableExam.Columns.Add("점수");
+
+                    tableExam2.Columns.Add("이름");
+                    tableExam2.Columns.Add("점수");
+
                     table.Clear();
+                    tableExam.Clear();
+                    tableExam2.Clear();
 
                     while (!file.EndOfStream)
                     {
@@ -139,11 +150,12 @@ namespace ScoreCalculate
                         _Score.Add(Data[2]);
                         _scoreMax.Add(Convert.ToInt32(Data[2]));
 
-                        table.Rows.Add(Data[0], Data[1], Data[2]);                                                   
+                        table.Rows.Add(Data[0], Data[1], Data[2]);
+                        tableExam.Rows.Add(Data[0], Data[2]);
+                        tableExam2.Rows.Add(Data[0], Data[2]);
                     }                 
 
-                    dataGridView1.DataSource = table;
-                    file.Close();
+                    dataGridView1.DataSource = table;                                    
 
                     // 점수 연산
                     max = Convert.ToDecimal(_scoreMax.Max());
@@ -152,16 +164,28 @@ namespace ScoreCalculate
                         sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
                         avg = Math.Truncate(10*(sum / table.Rows.Count))/10; // .0f
                         score = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
-                     
+
                         if (max == score)
-                        {                       
+                        {
                             name = Convert.ToString(dataGridView1.Rows[i].Cells["이름"].Value);
                             school = Convert.ToString(dataGridView1.Rows[i].Cells["학교"].Value);
                             scoreCompare = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
                         }
                     }
-               
-                    Calculate(avg, max, name, school, scoreCompare);                 
+
+                    // 전체 평균
+                    all_Avg_Value_tbox.Text = avg.ToString();
+
+                    // 득점자
+                    best_Score_tBox.Text = $"{name},{school}, {scoreCompare}";
+
+                    //합/불격자
+                    tableExam.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
+                    tableExam2.DefaultView.RowFilter = $"점수 > {scoreCutLine}";
+                    dataGridView2.DataSource = tableExam;
+                    dataGridView3.DataSource = tableExam2;
+                  
+                    file.Close();
                 }
                 finally
                 {
@@ -186,21 +210,7 @@ namespace ScoreCalculate
             label2.Text = "<입력값>";
             name_tbox.Focus();
         }
-        #endregion
-
-        #region 값구하기
-
-        private void Calculate(Decimal avg, Decimal max, string name, string school, Decimal scoreCompare)
-        {
-            all_Avg_Value_tbox.Text = avg.ToString();
-            best_Score_tBox.Text = $"{name},{school}, {scoreCompare}";
-
-            // 득점자
-
-
-        }
-
-        #endregion
+        #endregion   
 
         #region 이벤트
         // 정보입력

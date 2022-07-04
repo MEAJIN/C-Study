@@ -48,6 +48,11 @@ namespace ScoreCalculate
             this.name_label = new System.Windows.Forms.Label();
             this.writeValue_tbox = new System.Windows.Forms.TextBox();
             this.calculate_Panel = new System.Windows.Forms.Panel();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -61,6 +66,8 @@ namespace ScoreCalculate
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.calculate_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -146,7 +153,7 @@ namespace ScoreCalculate
             this.info_panel.Controls.Add(this.panel2);
             this.info_panel.Controls.Add(this.main_Panel);
             this.info_panel.Controls.Add(this.writeValue_tbox);
-            this.info_panel.Location = new System.Drawing.Point(957, 12);
+            this.info_panel.Location = new System.Drawing.Point(953, 39);
             this.info_panel.Name = "info_panel";
             this.info_panel.Size = new System.Drawing.Size(992, 567);
             this.info_panel.TabIndex = 8;
@@ -286,21 +293,86 @@ namespace ScoreCalculate
             // calculate_Panel
             // 
             this.calculate_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calculate_Panel.Controls.Add(this.dataGridView3);
+            this.calculate_Panel.Controls.Add(this.dataGridView2);
+            this.calculate_Panel.Controls.Add(this.label6);
+            this.calculate_Panel.Controls.Add(this.label5);
+            this.calculate_Panel.Controls.Add(this.label4);
             this.calculate_Panel.Controls.Add(this.dataGridView1);
             this.calculate_Panel.Controls.Add(this.panel1);
-            this.calculate_Panel.Location = new System.Drawing.Point(29, 11);
+            this.calculate_Panel.Location = new System.Drawing.Point(-4, -4);
             this.calculate_Panel.Name = "calculate_Panel";
             this.calculate_Panel.Size = new System.Drawing.Size(991, 568);
             this.calculate_Panel.TabIndex = 9;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView3.Location = new System.Drawing.Point(690, 64);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 23;
+            this.dataGridView3.Size = new System.Drawing.Size(250, 235);
+            this.dataGridView3.TabIndex = 18;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.Silver;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView2.Location = new System.Drawing.Point(436, 64);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(250, 235);
+            this.dataGridView2.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(687, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 16);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "<Fail>";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(433, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 16);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "<Pass>";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(44, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 16);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "<DataView>";
+            // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 44);
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView1.Location = new System.Drawing.Point(47, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(556, 259);
+            this.dataGridView1.Size = new System.Drawing.Size(384, 234);
             this.dataGridView1.TabIndex = 15;
             // 
             // panel1
@@ -342,7 +414,7 @@ namespace ScoreCalculate
             this.best_Score_tBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.best_Score_tBox.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.best_Score_tBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.best_Score_tBox.Location = new System.Drawing.Point(152, 123);
+            this.best_Score_tBox.Location = new System.Drawing.Point(152, 114);
             this.best_Score_tBox.Name = "best_Score_tBox";
             this.best_Score_tBox.ReadOnly = true;
             this.best_Score_tBox.Size = new System.Drawing.Size(360, 21);
@@ -353,7 +425,7 @@ namespace ScoreCalculate
             this.best_Score_label.AutoSize = true;
             this.best_Score_label.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.best_Score_label.ForeColor = System.Drawing.Color.White;
-            this.best_Score_label.Location = new System.Drawing.Point(17, 123);
+            this.best_Score_label.Location = new System.Drawing.Point(17, 114);
             this.best_Score_label.Name = "best_Score_label";
             this.best_Score_label.Size = new System.Drawing.Size(137, 21);
             this.best_Score_label.TabIndex = 0;
@@ -365,7 +437,7 @@ namespace ScoreCalculate
             this.all_Avg_Value_tbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.all_Avg_Value_tbox.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.all_Avg_Value_tbox.ForeColor = System.Drawing.SystemColors.Window;
-            this.all_Avg_Value_tbox.Location = new System.Drawing.Point(184, 74);
+            this.all_Avg_Value_tbox.Location = new System.Drawing.Point(184, 65);
             this.all_Avg_Value_tbox.Name = "all_Avg_Value_tbox";
             this.all_Avg_Value_tbox.ReadOnly = true;
             this.all_Avg_Value_tbox.Size = new System.Drawing.Size(140, 21);
@@ -376,7 +448,7 @@ namespace ScoreCalculate
             this.all_Average_Value_label.AutoSize = true;
             this.all_Average_Value_label.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.all_Average_Value_label.ForeColor = System.Drawing.Color.White;
-            this.all_Average_Value_label.Location = new System.Drawing.Point(17, 74);
+            this.all_Average_Value_label.Location = new System.Drawing.Point(17, 65);
             this.all_Average_Value_label.Name = "all_Average_Value_label";
             this.all_Average_Value_label.Size = new System.Drawing.Size(169, 21);
             this.all_Average_Value_label.TabIndex = 0;
@@ -402,6 +474,9 @@ namespace ScoreCalculate
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.calculate_Panel.ResumeLayout(false);
+            this.calculate_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -438,6 +513,11 @@ namespace ScoreCalculate
         private System.Windows.Forms.TextBox all_Avg_Value_tbox;
         private System.Windows.Forms.Label all_Average_Value_label;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 
