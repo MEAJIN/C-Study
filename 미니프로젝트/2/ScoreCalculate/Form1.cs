@@ -98,16 +98,16 @@ namespace ScoreCalculate
 
         private void FileReader()
         {
-            using (StreamReader file = new StreamReader(DirPath + "2022-07-01.csv"))
+            using (StreamReader file = new StreamReader(DirPath + "2022-07-04.csv"))
             {
                 FileStream stream = null;
                 decimal sum = 0;
                 decimal avg = 0;
                 decimal max = 0;
-
-                decimal name;
-                string namee;
-                decimal sum1 = 0;
+                decimal score = 0;
+                string name = "";
+                string school = "";
+                decimal scoreCompare = 0;
 
                 try
                 {
@@ -137,39 +137,39 @@ namespace ScoreCalculate
                         _School.Add(Data[1]);
                         _Score.Add(Data[2]);
 
-                        table.Rows.Add(Data[0], Data[1], Data[2]);                                            
+                        table.Rows.Add(Data[0], Data[1], Data[2]);                                                   
                     }                 
 
                     dataGridView1.DataSource = table;
+                    file.Close();
 
                     // 점수 연산
+                    max = Convert.ToDecimal(_Score.Max());
+                    Console.WriteLine(max);
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
                         sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
-                        avg = Math.Truncate(10*(sum / table.Rows.Count))/10; // .0f                      
-                    }
+                        avg = Math.Truncate(10*(sum / table.Rows.Count))/10; // .0f
+                        score = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
+                        
+                        
 
-                    max = Convert.ToDecimal(_Score.Max());
-
-                    for (int i = 0; i < table.Rows.Count; i++)
-                    {
-                        sum1 = Convert.ToDecimal(dataGridView1.Rows[i]);
-                        Console.WriteLine(sum1);
-                        if (sum1 == max)
-                        {
-                            
+                        if (max == score)
+                        {                       
+                            name = Convert.ToString(dataGridView1.Rows[i].Cells["이름"].Value);
+                            school = Convert.ToString(dataGridView1.Rows[i].Cells["학교"].Value);
+                            scoreCompare = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
                         }
                     }
 
+                    
 
-
-                    Calculate(sum, avg, max);
-
-                    file.Close();
+                    Calculate(avg, max, name, school, scoreCompare);                 
                 }
                 finally
                 {
                     if (stream != null) stream.Dispose();
+
                 }
             }
         }
@@ -194,15 +194,14 @@ namespace ScoreCalculate
 
         #region 값구하기
 
-        private void Calculate(Decimal sum, Decimal avg, Decimal max)
+        private void Calculate(Decimal avg, Decimal max, string name, string school, Decimal scoreCompare)
         {
-            all_Sum_Value_tbox.Text = sum.ToString();
             all_Avg_Value_tbox.Text = avg.ToString();
-            best_Score_tBox.Text = max.ToString();
+            best_Score_tBox.Text = $"{name},{school}, {scoreCompare}";
 
             // 득점자
 
-           
+
         }
 
         #endregion
