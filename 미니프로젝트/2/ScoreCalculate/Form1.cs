@@ -14,67 +14,31 @@ namespace ScoreCalculate
     {
         #region 공유변수
         string DirPath = $@"C:\Users\khj\source\repos\C-Study\미니프로젝트\2\Info\";
-
-
+        string Date = DateTime.Now.ToString("yyyy-MM-dd");
+        
         #endregion
 
         public Form1()
         {
             InitializeComponent();
-            FileReader();
+            FileReader();        
         }
-
-        #region 시작 화면
-        private void start_btn_Click(object sender, EventArgs e)
-        {
-            main_Panel.Hide();
-        }
-
-        private void start_btn_MouseMove(object sender, MouseEventArgs e)
-        {
-            start_btn.ForeColor = Color.Yellow;
-        }
-
-        private void start_btn_MouseLeave(object sender, EventArgs e)
-        {
-            start_btn.ForeColor = Color.White;
-        }
-
-        private void start_btn_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                start_btn_Click(sender, e);
-            }
-        }
-        #endregion
 
         #region 파일 쓰기
-        private void score_tbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Input();
-                WrietValue();
-            }
-        }
-
         private void Input()
         {
-            string Date = DateTime.Now.ToString("yyyy-MM-dd");
             string FileName = Date + ".csv";
             string FilePath = DirPath + FileName;
 
             string Name = name_tbox.Text;
             string School = school_tbox.Text;
-            double Score = Convert.ToDouble(score_tbox.Text);
+            string Score = score_tbox.Text;
 
             FileStream stream = null;
             DirectoryInfo Dir = new DirectoryInfo(DirPath);
-            FileInfo File = new FileInfo(FilePath);
 
             try
-            {
+            {            
                 if (!Dir.Exists)
                 {
                     Directory.CreateDirectory(DirPath);
@@ -87,6 +51,10 @@ namespace ScoreCalculate
                 }
 
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "입력오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             finally
             {
                 if (stream != null) stream.Dispose();
@@ -98,7 +66,7 @@ namespace ScoreCalculate
 
         private void FileReader()
         {
-            using (StreamReader file = new StreamReader(DirPath + "2022-06-29.csv"))
+            using (StreamReader file = new StreamReader(DirPath + Date + ".csv"))
             {
                 FileStream stream = null;
                 decimal sum = 0;
@@ -153,16 +121,16 @@ namespace ScoreCalculate
                         table.Rows.Add(Data[0], Data[1], Data[2]);
                         tableExam.Rows.Add(Data[0], Data[2]);
                         tableExam2.Rows.Add(Data[0], Data[2]);
-                    }                 
+                    }
 
-                    dataGridView1.DataSource = table;                                    
+                    dataGridView1.DataSource = table;
 
                     // 점수 연산
                     max = Convert.ToDecimal(_scoreMax.Max());
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
                         sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
-                        avg = Math.Truncate(10*(sum / table.Rows.Count))/10; // .0f
+                        avg = Math.Truncate(10 * (sum / table.Rows.Count)) / 10; // .0f
                         score = Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
 
                         if (max == score)
@@ -180,11 +148,11 @@ namespace ScoreCalculate
                     best_Score_tBox.Text = $"{name},{school}, {scoreCompare}";
 
                     //합/불격자
-                    tableExam.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
-                    tableExam2.DefaultView.RowFilter = $"점수 > {scoreCutLine}";
+                    tableExam.DefaultView.RowFilter = $"점수 > {scoreCutLine}";
+                    tableExam2.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
                     dataGridView2.DataSource = tableExam;
                     dataGridView3.DataSource = tableExam2;
-                  
+
                     file.Close();
                 }
                 finally
@@ -210,10 +178,45 @@ namespace ScoreCalculate
             label2.Text = "<입력값>";
             name_tbox.Focus();
         }
-        #endregion   
+        #endregion
 
         #region 이벤트
-        // 정보입력
+        private void start_btn_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void start_btn_MouseDown(object sender, MouseEventArgs e)
+        {
+            start_btn.ForeColor = Color.Yellow;
+
+        }
+
+        private void score_tbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Input();
+                WrietValue();
+            }
+        }
+
+        private void F1_btn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                tabControl1.SelectedIndex = 2;
+            }
+        }
+
+        private void F2_btn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                tabControl1.SelectedIndex = 1;
+            }
+        }
+
         private void name_tbox_MouseMove(object sender, MouseEventArgs e)
         {
             name_tbox.BackColor = Color.White;
@@ -250,7 +253,12 @@ namespace ScoreCalculate
             score_tbox.ForeColor = Color.White;
         }
 
+
+
+
+
         #endregion
+
 
     }
 }
