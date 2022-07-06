@@ -428,11 +428,13 @@ namespace ScoreCalculate
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.main);
             this.tabControl1.Controls.Add(this._inupt);
             this.tabControl1.Controls.Add(this._output);
             this.tabControl1.Controls.Add(this.etc);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 3);
+            this.tabControl1.Font = new System.Drawing.Font("둥근모꼴", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tabControl1.Location = new System.Drawing.Point(-2, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(961, 587);
@@ -505,10 +507,10 @@ namespace ScoreCalculate
             this.main.Controls.Add(this.label37);
             this.main.Controls.Add(this.label30);
             this.main.Controls.Add(this.label21);
-            this.main.Location = new System.Drawing.Point(4, 22);
+            this.main.Location = new System.Drawing.Point(4, 28);
             this.main.Name = "main";
             this.main.Padding = new System.Windows.Forms.Padding(3);
-            this.main.Size = new System.Drawing.Size(953, 561);
+            this.main.Size = new System.Drawing.Size(953, 555);
             this.main.TabIndex = 0;
             this.main.Text = "main";
             // 
@@ -1222,10 +1224,10 @@ namespace ScoreCalculate
             this._inupt.Controls.Add(this.label2);
             this._inupt.Controls.Add(this.writeValue_tbox);
             this._inupt.Controls.Add(this.panel2);
-            this._inupt.Location = new System.Drawing.Point(4, 22);
+            this._inupt.Location = new System.Drawing.Point(4, 28);
             this._inupt.Name = "_inupt";
             this._inupt.Padding = new System.Windows.Forms.Padding(3);
-            this._inupt.Size = new System.Drawing.Size(953, 561);
+            this._inupt.Size = new System.Drawing.Size(953, 555);
             this._inupt.TabIndex = 1;
             this._inupt.Text = "input";
             // 
@@ -1248,25 +1250,26 @@ namespace ScoreCalculate
             this._output.Controls.Add(this.label5);
             this._output.Controls.Add(this.dataGridView2);
             this._output.Controls.Add(this.label6);
-            this._output.Location = new System.Drawing.Point(4, 22);
+            this._output.Location = new System.Drawing.Point(4, 28);
             this._output.Name = "_output";
             this._output.Padding = new System.Windows.Forms.Padding(3);
-            this._output.Size = new System.Drawing.Size(953, 561);
+            this._output.Size = new System.Drawing.Size(953, 555);
             this._output.TabIndex = 2;
             this._output.Text = "output";
             // 
             // etc
             // 
             this.etc.BackColor = System.Drawing.Color.Black;
+            this.etc.CausesValidation = false;
             this.etc.Controls.Add(this.label72);
             this.etc.Controls.Add(this.showDataGridView);
             this.etc.Controls.Add(this.label71);
             this.etc.Controls.Add(this.panel5);
             this.etc.Controls.Add(this.csv_fileList);
-            this.etc.Location = new System.Drawing.Point(4, 22);
+            this.etc.Location = new System.Drawing.Point(4, 28);
             this.etc.Name = "etc";
             this.etc.Padding = new System.Windows.Forms.Padding(3);
-            this.etc.Size = new System.Drawing.Size(953, 561);
+            this.etc.Size = new System.Drawing.Size(953, 555);
             this.etc.TabIndex = 3;
             this.etc.Text = "etc";
             // 
@@ -1427,11 +1430,12 @@ namespace ScoreCalculate
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(959, 659);
+            this.ClientSize = new System.Drawing.Size(959, 586);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "누가 낙제했니?";
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
