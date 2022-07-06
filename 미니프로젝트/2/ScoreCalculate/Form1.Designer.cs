@@ -39,7 +39,6 @@ namespace ScoreCalculate
             this.school_label = new System.Windows.Forms.Label();
             this.name_label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.F1_btn = new System.Windows.Forms.Button();
             this.writeValue_tbox = new System.Windows.Forms.TextBox();
             this.F2_btn = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -50,16 +49,26 @@ namespace ScoreCalculate
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.best_Score_tBox = new System.Windows.Forms.TextBox();
             this.best_Score_label = new System.Windows.Forms.Label();
             this.all_Avg_Value_tbox = new System.Windows.Forms.TextBox();
             this.all_Average_Value_label = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.main = new System.Windows.Forms.TabPage();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
@@ -109,9 +118,21 @@ namespace ScoreCalculate
             this.label37 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this._inupt = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this._output = new System.Windows.Forms.TabPage();
+            this.etc = new System.Windows.Forms.TabPage();
+            this.label72 = new System.Windows.Forms.Label();
+            this.showDataGridView = new System.Windows.Forms.DataGridView();
+            this.label71 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.fileSave_btn = new System.Windows.Forms.Button();
+            this.newCreate_btn = new System.Windows.Forms.Button();
+            this.fileDel_btn = new System.Windows.Forms.Button();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.csv_fileList = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -120,16 +141,19 @@ namespace ScoreCalculate
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.main.SuspendLayout();
+            this._inupt.SuspendLayout();
+            this._output.SuspendLayout();
+            this.etc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.F1_btn);
             this.panel2.Location = new System.Drawing.Point(23, 330);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(905, 209);
@@ -229,23 +253,11 @@ namespace ScoreCalculate
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(671, 173);
+            this.label1.Location = new System.Drawing.Point(771, 173);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 16);
+            this.label1.Size = new System.Drawing.Size(112, 16);
             this.label1.TabIndex = 88;
-            this.label1.Text = "↩ ENTER(입력), F1:결과보기";
-            // 
-            // F1_btn
-            // 
-            this.F1_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.F1_btn.FlatAppearance.BorderSize = 0;
-            this.F1_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.F1_btn.Location = new System.Drawing.Point(895, 184);
-            this.F1_btn.Name = "F1_btn";
-            this.F1_btn.Size = new System.Drawing.Size(10, 23);
-            this.F1_btn.TabIndex = 4;
-            this.F1_btn.UseVisualStyleBackColor = true;
-            this.F1_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.F1_btn_KeyDown);
+            this.label1.Text = "↩ ENTER(입력)";
             // 
             // writeValue_tbox
             // 
@@ -265,12 +277,11 @@ namespace ScoreCalculate
             // 
             this.F2_btn.FlatAppearance.BorderSize = 0;
             this.F2_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.F2_btn.Location = new System.Drawing.Point(886, 172);
+            this.F2_btn.Location = new System.Drawing.Point(865, 137);
             this.F2_btn.Name = "F2_btn";
-            this.F2_btn.Size = new System.Drawing.Size(10, 23);
+            this.F2_btn.Size = new System.Drawing.Size(25, 23);
             this.F2_btn.TabIndex = 1;
             this.F2_btn.UseVisualStyleBackColor = true;
-            this.F2_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.F2_btn_KeyDown);
             // 
             // dataGridView3
             // 
@@ -357,7 +368,6 @@ namespace ScoreCalculate
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.best_Score_tBox);
             this.panel4.Controls.Add(this.F2_btn);
             this.panel4.Controls.Add(this.best_Score_label);
@@ -367,17 +377,6 @@ namespace ScoreCalculate
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(893, 195);
             this.panel4.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(671, 174);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(216, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "↩ ENTER(입력), F2:입력하기";
             // 
             // best_Score_tBox
             // 
@@ -429,77 +428,199 @@ namespace ScoreCalculate
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(-2, -20);
+            this.tabControl1.Controls.Add(this.main);
+            this.tabControl1.Controls.Add(this._inupt);
+            this.tabControl1.Controls.Add(this._output);
+            this.tabControl1.Controls.Add(this.etc);
+            this.tabControl1.Location = new System.Drawing.Point(-2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(961, 587);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.TabStop = false;
             // 
-            // tabPage1
+            // main
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Black;
-            this.tabPage1.Controls.Add(this.label56);
-            this.tabPage1.Controls.Add(this.label50);
-            this.tabPage1.Controls.Add(this.label49);
-            this.tabPage1.Controls.Add(this.label48);
-            this.tabPage1.Controls.Add(this.label52);
-            this.tabPage1.Controls.Add(this.label54);
-            this.tabPage1.Controls.Add(this.label51);
-            this.tabPage1.Controls.Add(this.label47);
-            this.tabPage1.Controls.Add(this.label46);
-            this.tabPage1.Controls.Add(this.label44);
-            this.tabPage1.Controls.Add(this.label42);
-            this.tabPage1.Controls.Add(this.label39);
-            this.tabPage1.Controls.Add(this.label29);
-            this.tabPage1.Controls.Add(this.label27);
-            this.tabPage1.Controls.Add(this.label25);
-            this.tabPage1.Controls.Add(this.label31);
-            this.tabPage1.Controls.Add(this.label23);
-            this.tabPage1.Controls.Add(this.label20);
-            this.tabPage1.Controls.Add(this.label28);
-            this.tabPage1.Controls.Add(this.label26);
-            this.tabPage1.Controls.Add(this.label24);
-            this.tabPage1.Controls.Add(this.label22);
-            this.tabPage1.Controls.Add(this.label36);
-            this.tabPage1.Controls.Add(this.label43);
-            this.tabPage1.Controls.Add(this.label55);
-            this.tabPage1.Controls.Add(this.label41);
-            this.tabPage1.Controls.Add(this.label34);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.label38);
-            this.tabPage1.Controls.Add(this.label33);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.label40);
-            this.tabPage1.Controls.Add(this.label53);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label17);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label45);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.Title_tbox);
-            this.tabPage1.Controls.Add(this.start_btn);
-            this.tabPage1.Controls.Add(this.label32);
-            this.tabPage1.Controls.Add(this.label35);
-            this.tabPage1.Controls.Add(this.label37);
-            this.tabPage1.Controls.Add(this.label30);
-            this.tabPage1.Controls.Add(this.label21);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(953, 561);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.main.BackColor = System.Drawing.Color.Black;
+            this.main.Controls.Add(this.label67);
+            this.main.Controls.Add(this.label66);
+            this.main.Controls.Add(this.label65);
+            this.main.Controls.Add(this.label63);
+            this.main.Controls.Add(this.label62);
+            this.main.Controls.Add(this.label61);
+            this.main.Controls.Add(this.label60);
+            this.main.Controls.Add(this.label59);
+            this.main.Controls.Add(this.label58);
+            this.main.Controls.Add(this.label57);
+            this.main.Controls.Add(this.label56);
+            this.main.Controls.Add(this.label50);
+            this.main.Controls.Add(this.label49);
+            this.main.Controls.Add(this.label64);
+            this.main.Controls.Add(this.label48);
+            this.main.Controls.Add(this.label52);
+            this.main.Controls.Add(this.label54);
+            this.main.Controls.Add(this.label51);
+            this.main.Controls.Add(this.label47);
+            this.main.Controls.Add(this.label46);
+            this.main.Controls.Add(this.label44);
+            this.main.Controls.Add(this.label42);
+            this.main.Controls.Add(this.label39);
+            this.main.Controls.Add(this.label29);
+            this.main.Controls.Add(this.label27);
+            this.main.Controls.Add(this.label25);
+            this.main.Controls.Add(this.label31);
+            this.main.Controls.Add(this.label23);
+            this.main.Controls.Add(this.label20);
+            this.main.Controls.Add(this.label28);
+            this.main.Controls.Add(this.label26);
+            this.main.Controls.Add(this.label24);
+            this.main.Controls.Add(this.label22);
+            this.main.Controls.Add(this.label36);
+            this.main.Controls.Add(this.label43);
+            this.main.Controls.Add(this.label55);
+            this.main.Controls.Add(this.label41);
+            this.main.Controls.Add(this.label34);
+            this.main.Controls.Add(this.label10);
+            this.main.Controls.Add(this.label19);
+            this.main.Controls.Add(this.label38);
+            this.main.Controls.Add(this.label33);
+            this.main.Controls.Add(this.label18);
+            this.main.Controls.Add(this.label40);
+            this.main.Controls.Add(this.label53);
+            this.main.Controls.Add(this.label16);
+            this.main.Controls.Add(this.label17);
+            this.main.Controls.Add(this.label15);
+            this.main.Controls.Add(this.label14);
+            this.main.Controls.Add(this.label13);
+            this.main.Controls.Add(this.label12);
+            this.main.Controls.Add(this.label11);
+            this.main.Controls.Add(this.label9);
+            this.main.Controls.Add(this.label8);
+            this.main.Controls.Add(this.label45);
+            this.main.Controls.Add(this.label7);
+            this.main.Controls.Add(this.Title_tbox);
+            this.main.Controls.Add(this.start_btn);
+            this.main.Controls.Add(this.label32);
+            this.main.Controls.Add(this.label35);
+            this.main.Controls.Add(this.label37);
+            this.main.Controls.Add(this.label30);
+            this.main.Controls.Add(this.label21);
+            this.main.Location = new System.Drawing.Point(4, 22);
+            this.main.Name = "main";
+            this.main.Padding = new System.Windows.Forms.Padding(3);
+            this.main.Size = new System.Drawing.Size(953, 561);
+            this.main.TabIndex = 0;
+            this.main.Text = "main";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label67.ForeColor = System.Drawing.Color.White;
+            this.label67.Location = new System.Drawing.Point(936, 272);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(33, 35);
+            this.label67.TabIndex = 14;
+            this.label67.Text = "/";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label66.ForeColor = System.Drawing.Color.White;
+            this.label66.Location = new System.Drawing.Point(221, 523);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(60, 64);
+            this.label66.TabIndex = 13;
+            this.label66.Text = "○";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label65.ForeColor = System.Drawing.Color.White;
+            this.label65.Location = new System.Drawing.Point(352, 520);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(60, 64);
+            this.label65.TabIndex = 12;
+            this.label65.Text = "/";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label63.ForeColor = System.Drawing.Color.White;
+            this.label63.Location = new System.Drawing.Point(512, 520);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(60, 64);
+            this.label63.TabIndex = 11;
+            this.label63.Text = "/";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label62.ForeColor = System.Drawing.Color.White;
+            this.label62.Location = new System.Drawing.Point(-10, -9);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(33, 35);
+            this.label62.TabIndex = 10;
+            this.label62.Text = "/";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label61.ForeColor = System.Drawing.Color.White;
+            this.label61.Location = new System.Drawing.Point(87, -20);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(33, 35);
+            this.label61.TabIndex = 9;
+            this.label61.Text = "/";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label60.ForeColor = System.Drawing.Color.White;
+            this.label60.Location = new System.Drawing.Point(209, -9);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(33, 35);
+            this.label60.TabIndex = 8;
+            this.label60.Text = "/";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label59.ForeColor = System.Drawing.Color.White;
+            this.label59.Location = new System.Drawing.Point(771, -22);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(60, 64);
+            this.label59.TabIndex = 7;
+            this.label59.Text = "/";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label58.ForeColor = System.Drawing.Color.White;
+            this.label58.Location = new System.Drawing.Point(490, -33);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(60, 64);
+            this.label58.TabIndex = 6;
+            this.label58.Text = "/";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label57.ForeColor = System.Drawing.Color.White;
+            this.label57.Location = new System.Drawing.Point(328, -20);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(60, 64);
+            this.label57.TabIndex = 5;
+            this.label57.Text = "/";
             // 
             // label56
             // 
@@ -534,12 +655,23 @@ namespace ScoreCalculate
             this.label49.TabIndex = 3;
             this.label49.Text = "/";
             // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label64.ForeColor = System.Drawing.Color.White;
+            this.label64.Location = new System.Drawing.Point(819, 537);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(33, 35);
+            this.label64.TabIndex = 3;
+            this.label64.Text = "/";
+            // 
             // label48
             // 
             this.label48.AutoSize = true;
             this.label48.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label48.ForeColor = System.Drawing.Color.White;
-            this.label48.Location = new System.Drawing.Point(547, 501);
+            this.label48.Location = new System.Drawing.Point(648, 506);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(33, 35);
             this.label48.TabIndex = 3;
@@ -561,7 +693,7 @@ namespace ScoreCalculate
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label54.ForeColor = System.Drawing.Color.White;
-            this.label54.Location = new System.Drawing.Point(121, 511);
+            this.label54.Location = new System.Drawing.Point(99, 506);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(33, 35);
             this.label54.TabIndex = 3;
@@ -572,7 +704,7 @@ namespace ScoreCalculate
             this.label51.AutoSize = true;
             this.label51.Font = new System.Drawing.Font("둥근모꼴", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label51.ForeColor = System.Drawing.Color.White;
-            this.label51.Location = new System.Drawing.Point(193, 496);
+            this.label51.Location = new System.Drawing.Point(193, 482);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(33, 35);
             this.label51.TabIndex = 3;
@@ -616,7 +748,7 @@ namespace ScoreCalculate
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label42.ForeColor = System.Drawing.Color.White;
-            this.label42.Location = new System.Drawing.Point(312, 441);
+            this.label42.Location = new System.Drawing.Point(310, 419);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(60, 64);
             this.label42.TabIndex = 2;
@@ -781,7 +913,7 @@ namespace ScoreCalculate
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label41.ForeColor = System.Drawing.Color.White;
-            this.label41.Location = new System.Drawing.Point(290, 482);
+            this.label41.Location = new System.Drawing.Point(288, 460);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(60, 64);
             this.label41.TabIndex = 2;
@@ -825,7 +957,7 @@ namespace ScoreCalculate
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("둥근모꼴", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label38.ForeColor = System.Drawing.Color.White;
-            this.label38.Location = new System.Drawing.Point(828, 16);
+            this.label38.Location = new System.Drawing.Point(806, 88);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(36, 37);
             this.label38.TabIndex = 2;
@@ -924,7 +1056,7 @@ namespace ScoreCalculate
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(12, 16);
+            this.label13.Location = new System.Drawing.Point(10, 61);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 64);
             this.label13.TabIndex = 2;
@@ -935,7 +1067,7 @@ namespace ScoreCalculate
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(887, 16);
+            this.label12.Location = new System.Drawing.Point(897, 7);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 64);
             this.label12.TabIndex = 2;
@@ -968,7 +1100,7 @@ namespace ScoreCalculate
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("둥근모꼴", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(273, 394);
+            this.label8.Location = new System.Drawing.Point(263, 363);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 37);
             this.label8.TabIndex = 2;
@@ -1019,7 +1151,7 @@ namespace ScoreCalculate
             this.start_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.start_btn.Font = new System.Drawing.Font("둥근모꼴", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.start_btn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.start_btn.Location = new System.Drawing.Point(369, 381);
+            this.start_btn.Location = new System.Drawing.Point(354, 383);
             this.start_btn.Name = "start_btn";
             this.start_btn.Size = new System.Drawing.Size(242, 56);
             this.start_btn.TabIndex = 1;
@@ -1045,7 +1177,7 @@ namespace ScoreCalculate
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("둥근모꼴", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label35.ForeColor = System.Drawing.Color.White;
-            this.label35.Location = new System.Drawing.Point(859, 61);
+            this.label35.Location = new System.Drawing.Point(869, 52);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(60, 64);
             this.label35.TabIndex = 2;
@@ -1084,18 +1216,18 @@ namespace ScoreCalculate
             this.label21.TabIndex = 2;
             this.label21.Text = "○";
             // 
-            // tabPage2
+            // _inupt
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Black;
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.writeValue_tbox);
-            this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(953, 561);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this._inupt.BackColor = System.Drawing.Color.Black;
+            this._inupt.Controls.Add(this.label2);
+            this._inupt.Controls.Add(this.writeValue_tbox);
+            this._inupt.Controls.Add(this.panel2);
+            this._inupt.Location = new System.Drawing.Point(4, 22);
+            this._inupt.Name = "_inupt";
+            this._inupt.Padding = new System.Windows.Forms.Padding(3);
+            this._inupt.Size = new System.Drawing.Size(953, 561);
+            this._inupt.TabIndex = 1;
+            this._inupt.Text = "input";
             // 
             // label2
             // 
@@ -1106,29 +1238,196 @@ namespace ScoreCalculate
             this.label2.Size = new System.Drawing.Size(142, 16);
             this.label2.TabIndex = 16;
             // 
-            // tabPage3
+            // _output
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.Black;
-            this.tabPage3.Controls.Add(this.dataGridView1);
-            this.tabPage3.Controls.Add(this.panel1);
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.dataGridView3);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.dataGridView2);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(953, 561);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this._output.BackColor = System.Drawing.Color.Black;
+            this._output.Controls.Add(this.dataGridView1);
+            this._output.Controls.Add(this.panel1);
+            this._output.Controls.Add(this.label4);
+            this._output.Controls.Add(this.dataGridView3);
+            this._output.Controls.Add(this.label5);
+            this._output.Controls.Add(this.dataGridView2);
+            this._output.Controls.Add(this.label6);
+            this._output.Location = new System.Drawing.Point(4, 22);
+            this._output.Name = "_output";
+            this._output.Padding = new System.Windows.Forms.Padding(3);
+            this._output.Size = new System.Drawing.Size(953, 561);
+            this._output.TabIndex = 2;
+            this._output.Text = "output";
+            // 
+            // etc
+            // 
+            this.etc.BackColor = System.Drawing.Color.Black;
+            this.etc.Controls.Add(this.label72);
+            this.etc.Controls.Add(this.showDataGridView);
+            this.etc.Controls.Add(this.label71);
+            this.etc.Controls.Add(this.panel5);
+            this.etc.Controls.Add(this.csv_fileList);
+            this.etc.Location = new System.Drawing.Point(4, 22);
+            this.etc.Name = "etc";
+            this.etc.Padding = new System.Windows.Forms.Padding(3);
+            this.etc.Size = new System.Drawing.Size(953, 561);
+            this.etc.TabIndex = 3;
+            this.etc.Text = "etc";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label72.ForeColor = System.Drawing.Color.White;
+            this.label72.Location = new System.Drawing.Point(455, 21);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(98, 16);
+            this.label72.TabIndex = 0;
+            this.label72.Text = "<DataView>";
+            // 
+            // showDataGridView
+            // 
+            this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.showDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.showDataGridView.BackgroundColor = System.Drawing.SystemColors.WindowFrame;
+            this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.showDataGridView.Location = new System.Drawing.Point(458, 53);
+            this.showDataGridView.Name = "showDataGridView";
+            this.showDataGridView.RowTemplate.Height = 23;
+            this.showDataGridView.Size = new System.Drawing.Size(462, 247);
+            this.showDataGridView.TabIndex = 17;
+            this.showDataGridView.TabStop = false;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label71.ForeColor = System.Drawing.Color.White;
+            this.label71.Location = new System.Drawing.Point(27, 21);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(98, 16);
+            this.label71.TabIndex = 0;
+            this.label71.Text = "<FileList>";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Location = new System.Drawing.Point(24, 332);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(905, 209);
+            this.panel5.TabIndex = 15;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Controls.Add(this.fileSave_btn);
+            this.panel6.Controls.Add(this.newCreate_btn);
+            this.panel6.Controls.Add(this.fileDel_btn);
+            this.panel6.Controls.Add(this.label68);
+            this.panel6.Controls.Add(this.label74);
+            this.panel6.Location = new System.Drawing.Point(6, 7);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(893, 195);
+            this.panel6.TabIndex = 9;
+            // 
+            // fileSave_btn
+            // 
+            this.fileSave_btn.AutoSize = true;
+            this.fileSave_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.fileSave_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.fileSave_btn.FlatAppearance.BorderSize = 0;
+            this.fileSave_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fileSave_btn.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.fileSave_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.fileSave_btn.Location = new System.Drawing.Point(-3, 123);
+            this.fileSave_btn.Name = "fileSave_btn";
+            this.fileSave_btn.Size = new System.Drawing.Size(899, 31);
+            this.fileSave_btn.TabIndex = 3;
+            this.fileSave_btn.TabStop = false;
+            this.fileSave_btn.Text = " 저장";
+            this.fileSave_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fileSave_btn.UseVisualStyleBackColor = false;
+            this.fileSave_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.fileSave_btn_KeyUp);
+            this.fileSave_btn.Leave += new System.EventHandler(this.fileSave_btn_Leave);
+            // 
+            // newCreate_btn
+            // 
+            this.newCreate_btn.AutoSize = true;
+            this.newCreate_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.newCreate_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.newCreate_btn.FlatAppearance.BorderSize = 0;
+            this.newCreate_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newCreate_btn.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.newCreate_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.newCreate_btn.Location = new System.Drawing.Point(-3, 28);
+            this.newCreate_btn.Name = "newCreate_btn";
+            this.newCreate_btn.Size = new System.Drawing.Size(899, 31);
+            this.newCreate_btn.TabIndex = 1;
+            this.newCreate_btn.Text = " 새로 만들기";
+            this.newCreate_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newCreate_btn.UseVisualStyleBackColor = false;
+            this.newCreate_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.newCreate_btn_KeyUp);
+            this.newCreate_btn.Leave += new System.EventHandler(this.newCreate_btn_Leave);
+            // 
+            // fileDel_btn
+            // 
+            this.fileDel_btn.AutoSize = true;
+            this.fileDel_btn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.fileDel_btn.FlatAppearance.BorderSize = 0;
+            this.fileDel_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fileDel_btn.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.fileDel_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.fileDel_btn.Location = new System.Drawing.Point(-3, 75);
+            this.fileDel_btn.Name = "fileDel_btn";
+            this.fileDel_btn.Size = new System.Drawing.Size(899, 31);
+            this.fileDel_btn.TabIndex = 2;
+            this.fileDel_btn.TabStop = false;
+            this.fileDel_btn.Text = " 파일 삭제";
+            this.fileDel_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fileDel_btn.UseVisualStyleBackColor = false;
+            this.fileDel_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.fileDel_btn_KeyUp);
+            this.fileDel_btn.Leave += new System.EventHandler(this.fileDel_btn_Leave);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label68.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label68.Location = new System.Drawing.Point(475, 172);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(416, 16);
+            this.label68.TabIndex = 0;
+            this.label68.Text = "탭(Tab)키 클릭 후, 방향키(↓)로 이동 / ↩ ENTER(선택)";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label74.ForeColor = System.Drawing.Color.White;
+            this.label74.Location = new System.Drawing.Point(17, 17);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(0, 21);
+            this.label74.TabIndex = 0;
+            // 
+            // csv_fileList
+            // 
+            this.csv_fileList.BackColor = System.Drawing.Color.Black;
+            this.csv_fileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.csv_fileList.Font = new System.Drawing.Font("둥근모꼴", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.csv_fileList.ForeColor = System.Drawing.Color.White;
+            this.csv_fileList.FormattingEnabled = true;
+            this.csv_fileList.ItemHeight = 19;
+            this.csv_fileList.Location = new System.Drawing.Point(30, 53);
+            this.csv_fileList.Name = "csv_fileList";
+            this.csv_fileList.Size = new System.Drawing.Size(397, 247);
+            this.csv_fileList.TabIndex = 0;
+            this.csv_fileList.TabStop = false;
+            this.csv_fileList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.csv_fileList_MouseClick_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(959, 566);
+            this.ClientSize = new System.Drawing.Size(959, 659);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -1144,12 +1443,18 @@ namespace ScoreCalculate
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.main.ResumeLayout(false);
+            this.main.PerformLayout();
+            this._inupt.ResumeLayout(false);
+            this._inupt.PerformLayout();
+            this._output.ResumeLayout(false);
+            this._output.PerformLayout();
+            this.etc.ResumeLayout(false);
+            this.etc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1167,7 +1472,6 @@ namespace ScoreCalculate
         private System.Windows.Forms.TextBox writeValue_tbox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox best_Score_tBox;
         private System.Windows.Forms.Label best_Score_label;
         private System.Windows.Forms.TextBox all_Avg_Value_tbox;
@@ -1180,12 +1484,11 @@ namespace ScoreCalculate
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button F2_btn;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage main;
         private System.Windows.Forms.TextBox Title_tbox;
         private System.Windows.Forms.Button start_btn;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button F1_btn;
+        private System.Windows.Forms.TabPage _inupt;
+        private System.Windows.Forms.TabPage _output;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label27;
@@ -1237,6 +1540,29 @@ namespace ScoreCalculate
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TabPage etc;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.DataGridView showDataGridView;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ListBox csv_fileList;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button fileSave_btn;
+        private System.Windows.Forms.Button fileDel_btn;
+        private System.Windows.Forms.Button newCreate_btn;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label74;
     }
 }
 

@@ -15,13 +15,14 @@ namespace ScoreCalculate
         #region 공유변수
         string DirPath = $@"C:\Users\khj\source\repos\C-Study\미니프로젝트\2\Info\";
         string Date = DateTime.Now.ToString("yyyy-MM-dd");
-        
+
         #endregion
 
         public Form1()
         {
             InitializeComponent();
-            FileReader();        
+            FileReader();
+            List();
         }
 
         #region 파일 쓰기
@@ -38,7 +39,7 @@ namespace ScoreCalculate
             DirectoryInfo Dir = new DirectoryInfo(DirPath);
 
             try
-            {            
+            {
                 if (!Dir.Exists)
                 {
                     Directory.CreateDirectory(DirPath);
@@ -62,11 +63,28 @@ namespace ScoreCalculate
         }
         #endregion
 
+        #region 입력 값 textbox로 출력
+        private void WrietValue()
+        {
+            writeValue_tbox.AppendText("'" + name_tbox.Text + "',");
+            writeValue_tbox.AppendText("'" + school_tbox.Text + "',");
+            writeValue_tbox.AppendText("'" + score_tbox.Text + "'\r\n");
+            writeValue_tbox.AppendText("\r\n");
+
+            name_tbox.Text = "";
+            school_tbox.Text = "";
+            score_tbox.Text = "";
+
+            label2.Text = "<입력값>";
+            name_tbox.Focus();
+        }
+        #endregion
+
         #region List 형태로 파일 읽기 및 연산
 
         private void FileReader()
-        {
-            using (StreamReader file = new StreamReader(DirPath + Date + ".csv"))
+        {//DirPath + Date + 
+            using (StreamReader file = new StreamReader(DirPath + "2022-07-05.csv"))
             {
                 FileStream stream = null;
                 decimal sum = 0;
@@ -163,21 +181,65 @@ namespace ScoreCalculate
         }
         #endregion
 
-        #region 입력 값 textbox로 출력
-        private void WrietValue()
+        #region # 파일 리스트 출력
+        public void List()
         {
-            writeValue_tbox.AppendText("'" + name_tbox.Text + "',");
-            writeValue_tbox.AppendText("'" + school_tbox.Text + "',");
-            writeValue_tbox.AppendText("'" + score_tbox.Text + "'\r\n");
-            writeValue_tbox.AppendText("\r\n");
+            DirectoryInfo _dInfo = new DirectoryInfo(DirPath);
+            FileInfo[] _fFiles = _dInfo.GetFiles("*.csv");
 
-            name_tbox.Text = "";
-            school_tbox.Text = "";
-            score_tbox.Text = "";
-
-            label2.Text = "<입력값>";
-            name_tbox.Focus();
+            foreach (FileInfo file in _fFiles)
+            {
+                csv_fileList.Items.Add(file.Name);
+            }
         }
+        #endregion
+
+        #region 클릭한 파일 경로 생성
+        private void csv_fileList_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            string selectedFileName = csv_fileList.GetItemText(csv_fileList.SelectedItem);
+            string setFilePath = DirPath + selectedFileName;
+            ShowDataGridView(setFilePath);
+        }
+        #endregion
+
+        #region 파일 내용 보기
+        private void ShowDataGridView(string getFilePath)
+        {          
+            List<String> _Name = new List<String>();
+            List<String> _School = new List<String>();
+            List<String> _Score = new List<String>();
+
+            StreamReader file = new StreamReader(getFilePath);
+            DataTable table = new DataTable();
+
+            table.Columns.Add("이름");
+            table.Columns.Add("학교");
+            table.Columns.Add("점수");
+
+            table.Clear();
+
+            while (!file.EndOfStream)
+            {
+                string line = file.ReadLine();
+                string[] data = line.Split(',');
+
+                if (line.Contains("이름"))
+                {
+                    continue;
+                }
+
+                _Name.Add(data[0]);
+                _School.Add(data[1]);
+                _Score.Add(data[2]);
+
+                table.Rows.Add(data[0], data[1], data[2]);
+            }
+
+            showDataGridView.DataSource = table;
+            file.Close();
+        }
+
         #endregion
 
         #region 이벤트
@@ -198,22 +260,6 @@ namespace ScoreCalculate
             {
                 Input();
                 WrietValue();
-            }
-        }
-
-        private void F1_btn_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                tabControl1.SelectedIndex = 2;
-            }
-        }
-
-        private void F2_btn_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F2)
-            {
-                tabControl1.SelectedIndex = 1;
             }
         }
 
@@ -252,13 +298,63 @@ namespace ScoreCalculate
             score_tbox.BackColor = Color.Black;
             score_tbox.ForeColor = Color.White;
         }
+        //
+        private void newCreate_btn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                newCreate_btn.BackColor = Color.GhostWhite;
+                newCreate_btn.ForeColor = Color.Black;
+            }
+            else
+            {
+                newCreate_btn_Leave(sender, e);
+            }
+        }
 
+        private void newCreate_btn_Leave(object sender, EventArgs e)
+        {
+            newCreate_btn.BackColor = Color.Black;
+            newCreate_btn.ForeColor = Color.GhostWhite;
+        }
 
+        private void fileDel_btn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                fileDel_btn.BackColor = Color.GhostWhite;
+                fileDel_btn.ForeColor = Color.Black;
+            }
+            else
+            {
+                fileDel_btn_Leave(sender, e);
+            }
+        }
 
+        private void fileDel_btn_Leave(object sender, EventArgs e)
+        {
+            fileDel_btn.BackColor = Color.Black;
+            fileDel_btn.ForeColor = Color.GhostWhite;
+        }
 
+        private void fileSave_btn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                fileSave_btn.BackColor = Color.GhostWhite;
+                fileSave_btn.ForeColor = Color.Black;
+            }
+            else 
+            {
+                fileSave_btn_Leave(sender, e);
+            }
+        }
 
+        private void fileSave_btn_Leave(object sender, EventArgs e)
+        {
+            fileSave_btn.BackColor = Color.Black;
+            fileSave_btn.ForeColor = Color.GhostWhite;
+        }
         #endregion
-
-
     }
 }
