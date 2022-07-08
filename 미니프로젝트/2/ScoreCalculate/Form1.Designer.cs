@@ -1348,6 +1348,8 @@ namespace ScoreCalculate
             this.fileSave_btn.Text = " 저장";
             this.fileSave_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fileSave_btn.UseVisualStyleBackColor = false;
+            this.fileSave_btn.Click += new System.EventHandler(this.fileSave_btn_Click);
+            this.fileSave_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fileSave_btn_KeyDown);
             this.fileSave_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.fileSave_btn_KeyUp);
             this.fileSave_btn.Leave += new System.EventHandler(this.fileSave_btn_Leave);
             // 
@@ -1367,6 +1369,8 @@ namespace ScoreCalculate
             this.newCreate_btn.Text = " 새로 만들기";
             this.newCreate_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.newCreate_btn.UseVisualStyleBackColor = false;
+            this.newCreate_btn.Click += new System.EventHandler(this.newCreate_btn_Click);
+            this.newCreate_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.newCreate_btn_KeyDown);
             this.newCreate_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.newCreate_btn_KeyUp);
             this.newCreate_btn.Leave += new System.EventHandler(this.newCreate_btn_Leave);
             // 
@@ -1384,8 +1388,10 @@ namespace ScoreCalculate
             this.fileDel_btn.TabIndex = 2;
             this.fileDel_btn.TabStop = false;
             this.fileDel_btn.Text = " 파일 삭제";
-            this.fileDel_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fileDel_btn.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.fileDel_btn.UseVisualStyleBackColor = false;
+            this.fileDel_btn.Click += new System.EventHandler(this.fileDel_btn_Click);
+            this.fileDel_btn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fileDel_btn_KeyDown);
             this.fileDel_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.fileDel_btn_KeyUp);
             this.fileDel_btn.Leave += new System.EventHandler(this.fileDel_btn_Leave);
             // 
