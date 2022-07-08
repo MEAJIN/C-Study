@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -25,18 +24,14 @@ namespace ScoreCalculate
         }
 
         #region 파일 쓰기
-        private void Input()
+        private void Input(string getFilePath)
         {
-            string FileName = Date + ".csv";
-            string FilePath = DirPath + FileName;
-
             string Name = name_tbox.Text;
             string School = school_tbox.Text;
             string Score = score_tbox.Text.ToString();
 
             FileStream stream = null;
             DirectoryInfo Dir = new DirectoryInfo(DirPath);
-            FileInfo file = new FileInfo(FilePath);
 
             try
             {
@@ -45,7 +40,7 @@ namespace ScoreCalculate
                     Directory.CreateDirectory(DirPath);
                 }
 
-                using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.GetEncoding("utf-8")))
+                using (StreamWriter writer = new StreamWriter(getFilePath, true, Encoding.GetEncoding("utf-8")))
                 {
                     writer.WriteLine("{0}, {1}, {2}", Name, School, Score);
                     writer.Close();
@@ -58,10 +53,7 @@ namespace ScoreCalculate
             finally
             {
                 if (stream != null) stream.Dispose();
-
             }
-
-            FileReader();
         }
         #endregion
 
@@ -82,9 +74,9 @@ namespace ScoreCalculate
         }
         #endregion
 
-        #region List 형태로 파일 읽기 및 연산
+        #region 파일 읽기 및 연산 (output)
 
-        private void FileReader()
+        private void FileReader(string getFilePath)
         {
             decimal sum = 0;
             decimal avg = 0;
@@ -93,7 +85,7 @@ namespace ScoreCalculate
             string name = "";
             string school = "";
             decimal scoreCompare = 0;
-            int scoreCutLine = 60;
+            double scoreCutLine = 60;
 
             List<String> _Name = new List<String>();
             List<String> _School = new List<String>();
@@ -104,7 +96,8 @@ namespace ScoreCalculate
             DataTable tableExam = new DataTable();
             DataTable tableExam2 = new DataTable();
 
-            StreamReader file = new StreamReader(DirPath + Date + ".csv");
+            //DirPath + Date + ".csv"
+            StreamReader file = new StreamReader(getFilePath);
 
             table.Columns.Add("이름");
             table.Columns.Add("학교");
@@ -130,10 +123,17 @@ namespace ScoreCalculate
                     continue;
                 }
 
-                _Name.Add(Data[0]);
-                _School.Add(Data[1]);
-                _Score.Add(Data[2]);
-                _scoreMax.Add(Convert.ToInt32(Data[2]));
+                try
+                {
+                    _Name.Add(Data[0]);
+                    _School.Add(Data[1]);
+                    _Score.Add(Data[2]);
+                    _scoreMax.Add(Convert.ToInt32(Data[2]));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
                 table.Rows.Add(Data[0], Data[1], Data[2]);
                 tableExam.Rows.Add(Data[0], Data[2]);
@@ -144,7 +144,15 @@ namespace ScoreCalculate
             file.Close();
 
             // 점수 연산
-            max = Convert.ToDecimal(_scoreMax.Max());
+            try
+            {
+                max = Convert.ToDecimal(_scoreMax.Max());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["점수"].Value);
@@ -166,14 +174,23 @@ namespace ScoreCalculate
             best_Score_tBox.Text = $"{name},{school}, {scoreCompare}";
 
             //합/불격자
-            tableExam.DefaultView.RowFilter = $"점수 > {scoreCutLine}";
-            tableExam2.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
+            try
+            {
+                tableExam.DefaultView.RowFilter = $"점수 >= {scoreCutLine}";
+                tableExam2.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
             dataGridView2.DataSource = tableExam;
             dataGridView3.DataSource = tableExam2;
         }
         #endregion
 
-        #region # 파일 리스트 출력
+        #region 파일 리스트 출력
         public void List()
         {
             DirectoryInfo _dInfo = new DirectoryInfo(DirPath);
@@ -191,11 +208,13 @@ namespace ScoreCalculate
         {
             string selectedFileName = csv_fileList.GetItemText(csv_fileList.SelectedItem);
             string setFilePath = DirPath + selectedFileName;
+            //Input(setFilePath);
+            FileReader(setFilePath);
             ShowDataGridView(setFilePath);
         }
         #endregion
 
-        #region 파일 내용 보기
+        #region 파일 내용 보기 (etc)
         private void ShowDataGridView(string getFilePath)
         {
             List<String> _Name = new List<String>();
@@ -232,121 +251,6 @@ namespace ScoreCalculate
             file.Close();
         }
 
-        #endregion
-
-        #region 이벤트
-        private void start_btn_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedIndex = 1;
-        }
-
-        private void start_btn_MouseDown(object sender, MouseEventArgs e)
-        {
-            start_btn.ForeColor = Color.Yellow;
-
-        }
-
-        private void score_tbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Input();
-                WrietValue();
-            }
-        }
-
-        private void name_tbox_MouseMove(object sender, MouseEventArgs e)
-        {
-            name_tbox.BackColor = Color.White;
-            name_tbox.ForeColor = Color.Black;
-        }
-
-        private void name_tbox_MouseLeave(object sender, EventArgs e)
-        {
-            name_tbox.BackColor = Color.Black;
-            name_tbox.ForeColor = Color.White;
-        }
-
-        private void school_tbox_MouseMove(object sender, MouseEventArgs e)
-        {
-            school_tbox.BackColor = Color.White;
-            school_tbox.ForeColor = Color.Black;
-        }
-
-        private void school_tbox_MouseLeave(object sender, EventArgs e)
-        {
-            school_tbox.BackColor = Color.Black;
-            school_tbox.ForeColor = Color.White;
-        }
-
-        private void score_tbox_MouseMove(object sender, MouseEventArgs e)
-        {
-            score_tbox.BackColor = Color.White;
-            score_tbox.ForeColor = Color.Black;
-        }
-
-        private void score_tbox_MouseLeave(object sender, EventArgs e)
-        {
-            score_tbox.BackColor = Color.Black;
-            score_tbox.ForeColor = Color.White;
-        }
-        //
-        private void newCreate_btn_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Down)
-            {
-                newCreate_btn.BackColor = Color.GhostWhite;
-                newCreate_btn.ForeColor = Color.Black;
-            }
-            else
-            {
-                newCreate_btn_Leave(sender, e);
-            }
-        }
-
-        private void newCreate_btn_Leave(object sender, EventArgs e)
-        {
-            newCreate_btn.BackColor = Color.Black;
-            newCreate_btn.ForeColor = Color.GhostWhite;
-        }
-
-        private void fileDel_btn_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Down)
-            {
-                fileDel_btn.BackColor = Color.GhostWhite;
-                fileDel_btn.ForeColor = Color.Black;
-            }
-            else
-            {
-                fileDel_btn_Leave(sender, e);
-            }
-        }
-
-        private void fileDel_btn_Leave(object sender, EventArgs e)
-        {
-            fileDel_btn.BackColor = Color.Black;
-            fileDel_btn.ForeColor = Color.GhostWhite;
-        }
-
-        private void fileSave_btn_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Down)
-            {
-                fileSave_btn.BackColor = Color.GhostWhite;
-                fileSave_btn.ForeColor = Color.Black;
-            }
-            else
-            {
-                fileSave_btn_Leave(sender, e);
-            }
-        }
-
-        private void fileSave_btn_Leave(object sender, EventArgs e)
-        {
-            fileSave_btn.BackColor = Color.Black;
-            fileSave_btn.ForeColor = Color.GhostWhite;
-        }
         #endregion
 
         #region 새로 만들기
@@ -448,7 +352,7 @@ namespace ScoreCalculate
             if (showDataGridView.Rows.Count == 0) return;
 
             // 헤더 정보 출력
-            if (header) 
+            if (header)
             {
                 for (int i = 0; i < showDataGridView.Columns.Count; i++)
                 {
@@ -463,7 +367,7 @@ namespace ScoreCalculate
             CsvExport.Write(CsvExport.NewLine);
 
             // 데이터 출력
-            foreach (DataGridViewRow row in showDataGridView.Rows) 
+            foreach (DataGridViewRow row in showDataGridView.Rows)
             {
                 if (!row.IsNewRow)
                 {
@@ -487,8 +391,123 @@ namespace ScoreCalculate
         }
 
 
+
         #endregion
 
-        
+        #region 이벤트
+        private void start_btn_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+
+        private void start_btn_MouseDown(object sender, MouseEventArgs e)
+        {
+            start_btn.ForeColor = Color.Yellow;
+
+        }
+
+        private void score_tbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //Input();
+                WrietValue();
+            }
+        }
+
+        private void name_tbox_MouseMove(object sender, MouseEventArgs e)
+        {
+            name_tbox.BackColor = Color.White;
+            name_tbox.ForeColor = Color.Black;
+        }
+
+        private void name_tbox_MouseLeave(object sender, EventArgs e)
+        {
+            name_tbox.BackColor = Color.Black;
+            name_tbox.ForeColor = Color.White;
+        }
+
+        private void school_tbox_MouseMove(object sender, MouseEventArgs e)
+        {
+            school_tbox.BackColor = Color.White;
+            school_tbox.ForeColor = Color.Black;
+        }
+
+        private void school_tbox_MouseLeave(object sender, EventArgs e)
+        {
+            school_tbox.BackColor = Color.Black;
+            school_tbox.ForeColor = Color.White;
+        }
+
+        private void score_tbox_MouseMove(object sender, MouseEventArgs e)
+        {
+            score_tbox.BackColor = Color.White;
+            score_tbox.ForeColor = Color.Black;
+        }
+
+        private void score_tbox_MouseLeave(object sender, EventArgs e)
+        {
+            score_tbox.BackColor = Color.Black;
+            score_tbox.ForeColor = Color.White;
+        }
+        //
+        private void newCreate_btn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                newCreate_btn.BackColor = Color.GhostWhite;
+                newCreate_btn.ForeColor = Color.Black;
+            }
+            else
+            {
+                newCreate_btn_Leave(sender, e);
+            }
+        }
+
+        private void newCreate_btn_Leave(object sender, EventArgs e)
+        {
+            newCreate_btn.BackColor = Color.Black;
+            newCreate_btn.ForeColor = Color.GhostWhite;
+        }
+
+        private void fileDel_btn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                fileDel_btn.BackColor = Color.GhostWhite;
+                fileDel_btn.ForeColor = Color.Black;
+            }
+            else
+            {
+                fileDel_btn_Leave(sender, e);
+            }
+        }
+
+        private void fileDel_btn_Leave(object sender, EventArgs e)
+        {
+            fileDel_btn.BackColor = Color.Black;
+            fileDel_btn.ForeColor = Color.GhostWhite;
+        }
+
+        private void fileSave_btn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                fileSave_btn.BackColor = Color.GhostWhite;
+                fileSave_btn.ForeColor = Color.Black;
+            }
+            else
+            {
+                fileSave_btn_Leave(sender, e);
+            }
+        }
+
+        private void fileSave_btn_Leave(object sender, EventArgs e)
+        {
+            fileSave_btn.BackColor = Color.Black;
+            fileSave_btn.ForeColor = Color.GhostWhite;
+        }
+        #endregion
+
     }
 }

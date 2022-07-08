@@ -131,7 +131,6 @@ namespace ScoreCalculate
             this.newCreate_btn = new System.Windows.Forms.Button();
             this.fileDel_btn = new System.Windows.Forms.Button();
             this.label68 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
             this.csv_fileList = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1278,7 +1277,7 @@ namespace ScoreCalculate
             this.label72.AutoSize = true;
             this.label72.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label72.ForeColor = System.Drawing.Color.White;
-            this.label72.Location = new System.Drawing.Point(455, 21);
+            this.label72.Location = new System.Drawing.Point(431, 26);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(98, 16);
             this.label72.TabIndex = 0;
@@ -1291,10 +1290,10 @@ namespace ScoreCalculate
             this.showDataGridView.BackgroundColor = System.Drawing.SystemColors.WindowFrame;
             this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.showDataGridView.Location = new System.Drawing.Point(458, 53);
+            this.showDataGridView.Location = new System.Drawing.Point(434, 59);
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.RowTemplate.Height = 23;
-            this.showDataGridView.Size = new System.Drawing.Size(462, 247);
+            this.showDataGridView.Size = new System.Drawing.Size(489, 247);
             this.showDataGridView.TabIndex = 17;
             this.showDataGridView.TabStop = false;
             // 
@@ -1303,7 +1302,7 @@ namespace ScoreCalculate
             this.label71.AutoSize = true;
             this.label71.Font = new System.Drawing.Font("둥근모꼴", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label71.ForeColor = System.Drawing.Color.White;
-            this.label71.Location = new System.Drawing.Point(27, 21);
+            this.label71.Location = new System.Drawing.Point(27, 27);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(98, 16);
             this.label71.TabIndex = 0;
@@ -1325,7 +1324,6 @@ namespace ScoreCalculate
             this.panel6.Controls.Add(this.newCreate_btn);
             this.panel6.Controls.Add(this.fileDel_btn);
             this.panel6.Controls.Add(this.label68);
-            this.panel6.Controls.Add(this.label74);
             this.panel6.Location = new System.Drawing.Point(6, 7);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(893, 195);
@@ -1340,7 +1338,7 @@ namespace ScoreCalculate
             this.fileSave_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fileSave_btn.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.fileSave_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.fileSave_btn.Location = new System.Drawing.Point(-3, 123);
+            this.fileSave_btn.Location = new System.Drawing.Point(-3, 129);
             this.fileSave_btn.Name = "fileSave_btn";
             this.fileSave_btn.Size = new System.Drawing.Size(899, 31);
             this.fileSave_btn.TabIndex = 3;
@@ -1362,7 +1360,7 @@ namespace ScoreCalculate
             this.newCreate_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newCreate_btn.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.newCreate_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.newCreate_btn.Location = new System.Drawing.Point(-3, 28);
+            this.newCreate_btn.Location = new System.Drawing.Point(-4, 32);
             this.newCreate_btn.Name = "newCreate_btn";
             this.newCreate_btn.Size = new System.Drawing.Size(899, 31);
             this.newCreate_btn.TabIndex = 1;
@@ -1382,7 +1380,7 @@ namespace ScoreCalculate
             this.fileDel_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fileDel_btn.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.fileDel_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.fileDel_btn.Location = new System.Drawing.Point(-3, 75);
+            this.fileDel_btn.Location = new System.Drawing.Point(-3, 81);
             this.fileDel_btn.Name = "fileDel_btn";
             this.fileDel_btn.Size = new System.Drawing.Size(899, 31);
             this.fileDel_btn.TabIndex = 2;
@@ -1406,16 +1404,6 @@ namespace ScoreCalculate
             this.label68.TabIndex = 0;
             this.label68.Text = "탭(Tab)키 클릭 후, 방향키(↓)로 이동 / ↩ ENTER(선택)";
             // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Font = new System.Drawing.Font("둥근모꼴", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label74.ForeColor = System.Drawing.Color.White;
-            this.label74.Location = new System.Drawing.Point(17, 17);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(0, 21);
-            this.label74.TabIndex = 0;
-            // 
             // csv_fileList
             // 
             this.csv_fileList.BackColor = System.Drawing.Color.Black;
@@ -1424,9 +1412,9 @@ namespace ScoreCalculate
             this.csv_fileList.ForeColor = System.Drawing.Color.White;
             this.csv_fileList.FormattingEnabled = true;
             this.csv_fileList.ItemHeight = 19;
-            this.csv_fileList.Location = new System.Drawing.Point(30, 53);
+            this.csv_fileList.Location = new System.Drawing.Point(30, 59);
             this.csv_fileList.Name = "csv_fileList";
-            this.csv_fileList.Size = new System.Drawing.Size(397, 247);
+            this.csv_fileList.Size = new System.Drawing.Size(385, 247);
             this.csv_fileList.TabIndex = 0;
             this.csv_fileList.TabStop = false;
             this.csv_fileList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.csv_fileList_MouseClick_1);
@@ -1572,7 +1560,6 @@ namespace ScoreCalculate
         private System.Windows.Forms.Button fileDel_btn;
         private System.Windows.Forms.Button newCreate_btn;
         private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Label label74;
     }
 }
 
