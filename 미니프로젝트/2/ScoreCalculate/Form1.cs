@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -24,14 +25,18 @@ namespace ScoreCalculate
         }
 
         #region 파일 쓰기
-        private void Input(string getFilePath)
+        private void Input()
         {
+            string FileName = Date + ".csv";
+            string FilePath = DirPath + FileName;
+
             string Name = name_tbox.Text;
             string School = school_tbox.Text;
             string Score = score_tbox.Text.ToString();
 
             FileStream stream = null;
             DirectoryInfo Dir = new DirectoryInfo(DirPath);
+            FileInfo file = new FileInfo(FilePath);
 
             try
             {
@@ -40,7 +45,7 @@ namespace ScoreCalculate
                     Directory.CreateDirectory(DirPath);
                 }
 
-                using (StreamWriter writer = new StreamWriter(getFilePath, true, Encoding.GetEncoding("utf-8")))
+                using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.GetEncoding("utf-8")))
                 {
                     writer.WriteLine("{0}, {1}, {2}", Name, School, Score);
                     writer.Close();
@@ -53,6 +58,7 @@ namespace ScoreCalculate
             finally
             {
                 if (stream != null) stream.Dispose();
+
             }
         }
         #endregion
@@ -74,7 +80,7 @@ namespace ScoreCalculate
         }
         #endregion
 
-        #region 파일 읽기 및 연산 (output)
+        #region List 형태로 파일 읽기 및 연산
 
         private void FileReader(string getFilePath)
         {
@@ -85,7 +91,7 @@ namespace ScoreCalculate
             string name = "";
             string school = "";
             decimal scoreCompare = 0;
-            double scoreCutLine = 60;
+            int scoreCutLine = 60;
 
             List<String> _Name = new List<String>();
             List<String> _School = new List<String>();
@@ -96,7 +102,6 @@ namespace ScoreCalculate
             DataTable tableExam = new DataTable();
             DataTable tableExam2 = new DataTable();
 
-            //DirPath + Date + ".csv"
             StreamReader file = new StreamReader(getFilePath);
 
             table.Columns.Add("이름");
@@ -123,35 +128,24 @@ namespace ScoreCalculate
                     continue;
                 }
 
-                try
-                {
-                    _Name.Add(Data[0]);
-                    _School.Add(Data[1]);
-                    _Score.Add(Data[2]);
-                    _scoreMax.Add(Convert.ToInt32(Data[2]));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+                _Name.Add(Data[0]);
+                _School.Add(Data[1]);
+                _Score.Add(Data[2]);
+                _scoreMax.Add(Convert.ToInt32(Data[2]));
 
                 table.Rows.Add(Data[0], Data[1], Data[2]);
                 tableExam.Rows.Add(Data[0], Data[2]);
                 tableExam2.Rows.Add(Data[0], Data[2]);
+
             }
 
             dataGridView1.DataSource = table;
             file.Close();
 
             // 점수 연산
-            try
-            {
-                max = Convert.ToDecimal(_scoreMax.Max());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            max = Convert.ToDecimal(_scoreMax.Max());
+
+            _scoreMax.Clear();
 
             for (int i = 0; i < table.Rows.Count; i++)
             {
@@ -173,24 +167,15 @@ namespace ScoreCalculate
             // 득점자
             best_Score_tBox.Text = $"{name},{school}, {scoreCompare}";
 
-            //합/불격자
-            try
-            {
-                tableExam.DefaultView.RowFilter = $"점수 >= {scoreCutLine}";
-                tableExam2.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
+            // 합/불격자
+            tableExam.DefaultView.RowFilter = $"점수 >= {scoreCutLine}";
+            tableExam2.DefaultView.RowFilter = $"점수 < {scoreCutLine}";
             dataGridView2.DataSource = tableExam;
             dataGridView3.DataSource = tableExam2;
         }
         #endregion
 
-        #region 파일 리스트 출력
+        #region # 파일 리스트 출력
         public void List()
         {
             DirectoryInfo _dInfo = new DirectoryInfo(DirPath);
@@ -208,47 +193,59 @@ namespace ScoreCalculate
         {
             string selectedFileName = csv_fileList.GetItemText(csv_fileList.SelectedItem);
             string setFilePath = DirPath + selectedFileName;
-            //Input(setFilePath);
-            FileReader(setFilePath);
             ShowDataGridView(setFilePath);
+            FileReader(setFilePath);
+
+            #region 파일 쓰기
+
+
+
+            #endregion
         }
         #endregion
 
-        #region 파일 내용 보기 (etc)
+        #region 파일 내용 보기
         private void ShowDataGridView(string getFilePath)
         {
             List<String> _Name = new List<String>();
             List<String> _School = new List<String>();
             List<String> _Score = new List<String>();
 
-            StreamReader file = new StreamReader(getFilePath);
-            DataTable table = new DataTable();
-
-            table.Columns.Add("이름");
-            table.Columns.Add("학교");
-            table.Columns.Add("점수");
-
-            table.Clear();
-
-            while (!file.EndOfStream)
+            try
             {
-                string line = file.ReadLine();
-                string[] data = line.Split(',');
+                StreamReader file = new StreamReader(getFilePath);
+                DataTable table = new DataTable();
 
-                if (line.Contains("이름"))
+                table.Columns.Add("이름");
+                table.Columns.Add("학교");
+                table.Columns.Add("점수");
+
+                table.Clear();
+
+                while (!file.EndOfStream)
                 {
-                    continue;
+                    string line = file.ReadLine();
+                    string[] data = line.Split(',');
+
+                    if (line.Contains("이름"))
+                    {
+                        continue;
+                    }
+
+                    _Name.Add(data[0]);
+                    _School.Add(data[1]);
+                    _Score.Add(data[2]);
+
+                    table.Rows.Add(data[0], data[1], data[2]);
                 }
 
-                _Name.Add(data[0]);
-                _School.Add(data[1]);
-                _Score.Add(data[2]);
-
-                table.Rows.Add(data[0], data[1], data[2]);
+                showDataGridView.DataSource = table;
+                file.Close();
             }
-
-            showDataGridView.DataSource = table;
-            file.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "파일을 정확히 선택해주세요!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         #endregion
@@ -391,7 +388,6 @@ namespace ScoreCalculate
         }
 
 
-
         #endregion
 
         #region 이벤트
@@ -410,7 +406,7 @@ namespace ScoreCalculate
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //Input();
+                Input();
                 WrietValue();
             }
         }
@@ -508,6 +504,5 @@ namespace ScoreCalculate
             fileSave_btn.ForeColor = Color.GhostWhite;
         }
         #endregion
-
     }
 }
